@@ -16,6 +16,8 @@
       - A programming pattern where a function ( callback ) is passed as an argument 
         to another function to handle asynchronous operations. The callback is executed
         once the asynchronous task is completed allowing for non-blocking code execution
+        ( allowing to continue to execute other code or tasks without waiting for a particular 
+          operation to complete )
 */
 
 // Example: 
@@ -36,9 +38,21 @@ timedGreeting( callback );
 */
 
 /* 
-    Another way for managing asynchronous code in JavaScript would be to use Async + Ajax 
-    
+    Another way for managing asynchronous code in JavaScript would be to use Async + AJAX 
+    Here is an example using the fetch API to make an asynchronous HTTP request
 */
+
+let planet;
+
+fetch( 'https://swapi.dev/api/planets/1/' )
+  .then( response => response.json() ) // Remember because we only have one statement we can omit parentheses around the parameter 
+  .then( data => {
+    planet = data;
+    console.log( planet )
+  })
+  .catch( error => {
+    console.error( `An Error occurred wile fetching your data` , error );
+  });
 
 
 
